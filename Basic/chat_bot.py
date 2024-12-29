@@ -1,5 +1,4 @@
 import random
-import pyttsx3 as pytalk
 
 responses = {
     "greeting": ["Hello! How can I assist you?", "Hi there! What can I do for you?"],
@@ -13,23 +12,8 @@ responses = {
 Sophia returns with 13 litres of milk. The programmer asks her why? so, Sophia replies: 'Because they had eggs'.""",
     "fallback": ["I'm sorry, I don't understand that.", "Can you please rephrase?"],
 }
-voiceFound = False
-try:
-    voice = pytalk.init()
-    voices = voice.getProperty('voices')
-    voice.setProperty('voice', voices[1].id)
-    voice.setProperty('rate', 135)
-    voiceFound = True
-    print("voice activated!")
-except:
-    print("""couldn't find voice module \ndownload python library "pyttsx3" for voices""")
 
 def bot_reply(output):
-    if voiceFound:
-        voice.say(output)
-        print(output)
-        voice.runAndWait()
-    else:
         print(output)
 
 def chat_bot():
@@ -37,9 +21,7 @@ def chat_bot():
 
     while True:
         user_input = input().lower().strip().replace("?", "")
-        if "joke" in user_input:
-            bot_reply(responses["joke"])
-        elif user_input in responses["faq"]:
+        if user_input in responses["faq"]:
             bot_reply(responses["faq"][user_input])
         elif any(word in user_input for word in ["hi", "hello"]):
             bot_reply(random.choice(responses["greeting"]))
@@ -48,14 +30,10 @@ def chat_bot():
         elif any(word in user_input for word in ["bye", "goodbye"]):
             bot_reply(random.choice(responses["goodbye"]))
             break
+        elif "joke" in user_input:
+            bot_reply(responses["joke"])
         elif any(word in user_input for word in ["do", "can you?"]):
             bot_reply("Sorry I can't do that.")
-        elif user_input == "deactivate":
-            print("voice deactivated!")
-            voiceFound = False
-        elif user_input == "activate":
-            print("voice activated!")
-            voiceFound = True
         else:
             bot_reply(random.choice(responses["fallback"]))
 
