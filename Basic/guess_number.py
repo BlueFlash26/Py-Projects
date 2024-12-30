@@ -12,12 +12,12 @@ def guess_number():
             break  
         elif user_guess < number:
             if attempts - 1==0:
-                print("Attempts finished You lost!") 
+                print("Attempts finished You lost! the number was " + str(number)) 
             else:
                 print(f"Wrong! {attempts -1} Tries left, " + "Your guess was too low.")
         elif user_guess > number:
             if attempts - 1==0:
-                print("Attempts finished You lost!") 
+                print("Attempts finished You lost! the number was " + str(number)) 
             else:
                 print(f"Wrong! {attempts -1} Tries left, " + "Your guess was too high.") 
         
