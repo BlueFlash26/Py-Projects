@@ -1,6 +1,7 @@
 array = []
 
 def double_it(value):
+    value = round(value)
     while value < 100:
         output = "2 x " + str(value) + " = "
         #array.append(value)
@@ -10,4 +11,4 @@ def double_it(value):
     
 
 
-double_it(int(input("Enter your value: ")))
+double_it(float(input("Enter your value: ")))
