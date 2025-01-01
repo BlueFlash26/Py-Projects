@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if guess %}
+    <p>your guess was {{ guess }}</p>
+    {% else %}
+    <form action="">
+        <label for="guess">Enter guess</label>
+        <input type="text" name="guess">
+        <input type="submit">
+    </form>
+    {% endif %}
+
+    {% if message %}
+        {{message}}
+    {% endif %}
+    
+{% endblock %}
